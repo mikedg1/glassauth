@@ -41,14 +41,9 @@ import android.text.ClipboardManager;
 import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.ContextMenu;
+import android.view.*;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.webkit.WebView;
 import android.widget.AdapterView;
@@ -208,6 +203,7 @@ public class AuthenticatorActivity extends TestableActivity {
     mTotpClock = mOtpProvider.getTotpClock();
 
     setContentView(R.layout.main);
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     // restore state on screen rotation
     Object savedState = getLastNonConfigurationInstance();
@@ -236,12 +232,6 @@ public class AuthenticatorActivity extends TestableActivity {
     noAccountsPromptDetails.setText(
         Html.fromHtml(getString(R.string.welcome_page_details)));
 
-    findViewById(R.id.how_it_works_button).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        displayHowItWorksInstructions();
-      }
-    });
     findViewById(R.id.add_account_button).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -1224,5 +1214,9 @@ public class AuthenticatorActivity extends TestableActivity {
       this.type = type;
       this.counter = counter;
     }
+  }
+  
+  public void onClick_scanBarcode(View view) {
+      scanBarcode();
   }
 }

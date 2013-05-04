@@ -16,6 +16,7 @@
 
 package com.google.android.apps.authenticator;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -71,6 +72,13 @@ public class MarketBuildOptionalFeatures implements OptionalFeatures {
 
   @Override
   public void onAuthenticatorActivityAddAccount(AuthenticatorActivity activity) {
-    activity.startActivity(new Intent(activity, AddOtherAccountActivity.class));
+    // activity.startActivity(new Intent(activity, AddOtherAccountActivity.class));
+      scanBarcode(activity);
+  }
+  
+
+  private void scanBarcode(Activity activity) {
+    activity.startActivity(AuthenticatorActivity.getLaunchIntentActionScanBarcode(activity));
+    //finish();
   }
 }

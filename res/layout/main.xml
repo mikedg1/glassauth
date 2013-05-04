@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2009 Google Inc. All Rights Reserved.
+<!--
+     Copyright 2009 Google Inc. All Rights Reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,71 +15,97 @@
      limitations under the License.
 -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_height="fill_parent" android:layout_width="fill_parent"
-    android:clipToPadding="true">
-  <ScrollView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-      android:orientation="vertical"
-      android:layout_height="fill_parent" android:layout_width="fill_parent"
-      android:clipToPadding="true">
-      <LinearLayout android:id="@+id/content_no_accounts"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginTop="10sp">
-        <TextView
-          android:text="@string/welcome_page_title"
-          android:textStyle="bold"
-          android:textAppearance="?android:attr/textAppearanceLarge"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-        />
-       <TextView
-          android:id="@+id/details"
-          android:text="@string/welcome_page_details"
-          android:textAppearance="?android:attr/textAppearanceMedium"
-          android:layout_marginTop="30sp"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-        />
-        <Button android:id="@+id/how_it_works_button"
-          android:text="@string/button_how_it_works"
-          android:layout_marginTop="30sp"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content" />
-        <Button android:id="@+id/add_account_button"
-          android:text="@string/button_add_account"
-          android:layout_marginTop="10sp"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content" />
-      </LinearLayout>
-      <LinearLayout android:id="@+id/content_accounts_present"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginTop="10sp"
-        android:orientation="vertical">
-        <TextView
-          android:id="@+id/enter_pin_prompt"
-          android:text="@string/enter_pin"
-          android:textAppearance="?android:attr/textAppearanceMedium"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-        />
-      </LinearLayout>
-    </LinearLayout>
-  </ScrollView>
-  <ListView android:id="@+id/user_list"
-    android:layout_width="fill_parent" android:layout_height="wrap_content"
-    style="?attr/accountListWithVerificationCodes"
-    />
-</LinearLayout>
+    android:layout_height="fill_parent"
+    android:clipToPadding="true"
+    android:orientation="vertical" >
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clipToPadding="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/content_no_accounts"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10sp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_page_title"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30sp"
+                    android:text="@string/welcome_page_details"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Button
+                    android:id="@+id/add_account_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:text="@string/button_add_account" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/content_accounts_present"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="10sp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/enter_pin_prompt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_pin"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+            <Button
+                android:onClick="onClick_scanBarcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Scan Barcode" />
+            <ListView
+                android:id="@+id/user_list"
+                style="?attr/accountListWithVerificationCodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:listSelector="@android:color/transparent" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
